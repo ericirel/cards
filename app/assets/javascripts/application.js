@@ -14,3 +14,16 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+$(document).on('ready page:load', function() {
+  $('.nav').on('ajax:success', function(e) {
+    $(e.currentTarget).closest('.card').hide();
+   });
+});
+
+// $(document).on('ready page:load', function() {
+//   $('.nav').click(function() {
+//     $('.nav').click();
+//     $('.nav').hide();
+//   });
+// });
+

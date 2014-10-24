@@ -12,17 +12,21 @@
 //
 //= require jquery
 //= require jquery-ui
-//= require jquery_ujs
 //= require best_in_place
+//= require jquery_ujs
 //= require turbolinks
 //= require_tree .
 $(document).on('ready page:load', function() {
-  $(document).on('ajax:success', '.nav', function(e) {
-    $(e.currentTarget).closest('.card').hide();
+  $(document).on('ajax:success', '.nav', function() {
+    $(this).closest('.card').fadeOut();
    });
   $(".best_in_place").best_in_place();
   $("#board").sortable({
-    appendTo: $('#board')
+    appendTo: $('#board'),
+    update: function(){
+      $.post($(this).data('update-url'),
+        $(this).sortable('serialize'));
+    }
   });
 });
 

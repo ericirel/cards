@@ -2,6 +2,7 @@
 <% if current_user %>
     <%= link_to 'sign out', destroy_user_session_path, method: :delete, class: :button %>
     <% unless @project %>
+    |
         <%= link_to 'new project', projects_path, method: :post, class: :button %>
         <% end %>
     <% if @project %>
